@@ -18,7 +18,7 @@ Free, local, privacy-friendly **meeting transcription + summarization**.
 - Streamlit UI with download buttons
 
 ## 🧱 Architecture
-Audio -> Faster-Whisper -> Transcript -> Chunking -> BART Summaries -> Merge -> Heuristic Action Extraction -> Markdown Report -> (CLI / Streamlit)
+🎙 Audio → 📝 Transcript (Faster-Whisper) → ✂ Chunking → 🗜  BART Summaries → 📋 Actions (Merge + Heuristic Action Extraction) → 📄 Report → 💻 Output
 
 ## 🚀 Quickstart
 ```bash
@@ -26,7 +26,7 @@ Audio -> Faster-Whisper -> Transcript -> Chunking -> BART Summaries -> Merge -> 
 sudo apt-get update && sudo apt-get install -y ffmpeg
 
 # 2) Clone & install
-git clone https://github.com/<your-username>/smart-meeting-summarizer.git
+git clone https://github.com/walidksb/smart-meeting-summarizer.git
 cd smart-meeting-summarizer
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt -r dev-requirements.txt

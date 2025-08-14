@@ -18,11 +18,11 @@ class SummaryResult:
 
 def load_summarizer(model_name: str | None = None):
     """
-    Loads a local HF summarization pipeline. Defaults to BART CNN which is free.
+    Loads a local HF summarization pipeline. Defaults to BART CNN.
     """
     model = model_name or settings.summary_model
     print(f"[cyan]Loading summarization model:[/cyan] {model}")
-    return pipeline("summarization", model=model, device=-1)  # CPU by default
+    return pipeline("summarization", model=model, device=-1)
 
 
 def summarize_long_text(

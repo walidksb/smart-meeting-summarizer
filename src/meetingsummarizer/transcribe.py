@@ -6,8 +6,8 @@ from rich import print
 
 try:
     from faster_whisper import WhisperModel
-except Exception:  # pragma: no cover
-    WhisperModel = None  # type: ignore
+except Exception:
+    WhisperModel = None
 
 
 def transcribe_audio(
