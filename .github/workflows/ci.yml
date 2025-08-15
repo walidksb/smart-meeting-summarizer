@@ -34,6 +34,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r dev-requirements.txt
 
+      - name: Install package
+        run: pip install -e .
+
       # 5️⃣ Lint the code (Ruff)
       - name: Lint with Ruff
         run: ruff check . --fix
