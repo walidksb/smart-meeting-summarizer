@@ -7,22 +7,56 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      # 1️⃣ Check out the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Set up Python environment
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: System deps
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Install deps
+          cache: 'pip'
+
+      # 3️⃣ Install system dependencies
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      # 4️⃣ Install Python dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r dev-requirements.txt
-      - name: Lint
+
+      # 5️⃣ Lint the code (Ruff)
+      - name: Lint with Ruff
+        run: ruff check . --fix
+
+      # 6️⃣ Run tests with coverage
+      - name: Run tests
         run: |
-          ruff check .
-          black --check .
-      - name: Tests
-        run: pytest -q
+          pytest --maxfail=1 --disable-warnings -q --cov=. --cov-report=xml
+
+      # 7️⃣ Upload coverage to Codecov (optional, needs CODECOV_TOKEN secret)
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          flags: unittests
+          fail_ci_if_error: true
+
+      # 8️⃣ Save dependencies cache for faster builds
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt', '**/dev-requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
