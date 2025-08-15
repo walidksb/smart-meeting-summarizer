@@ -8,8 +8,8 @@ def test_extract_decisions():
 
 
 def test_extract_action_items():
-    text = "Alice will prepare the API spec by Monday. Bob should update the README."
+    text = "Walid will prepare the API spec by Monday. Rayan should update the README."
     acts = extract_action_items(text)
     who = [a["assignee"] for a in acts]
-    assert "Alice" in who or "Bob" in who
+    assert "Walid" in who or "Rayan" in who
     assert any("API spec" in a["task"] for a in acts)
