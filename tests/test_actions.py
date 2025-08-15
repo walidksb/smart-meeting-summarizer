@@ -1,4 +1,4 @@
-from src.meetingsummarizer.actions import extract_action_items, extract_decisions
+from meetingsummarizer.actions import extract_action_items, extract_decisions
 
 
 def test_extract_decisions():

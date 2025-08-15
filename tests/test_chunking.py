@@ -1,4 +1,4 @@
-from src.meetingsummarizer.utils.chunking import split_by_words
+from meetingsummarizer.utils.chunking import split_by_words
 
 
 def test_split_by_words_basic():

@@ -1,4 +1,4 @@
-from src.meetingsummarizer.pipeline import run_from_transcript
+from meetingsummarizer.pipeline import run_from_transcript
 
 
 def test_pipeline_from_transcript_runs():
