@@ -1,7 +1,8 @@
 from pathlib import Path
 
 import streamlit as st
-from meetingsummarizer.pipeline import run_from_audio, run_from_transcript
+
+from src.meetingsummarizer.pipeline import run_from_audio, run_from_transcript
 
 st.set_page_config(page_title="Smart Meeting Summarizer", page_icon="📝", layout="centered")
 
