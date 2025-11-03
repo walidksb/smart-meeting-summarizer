@@ -1,6 +1,7 @@
 # Smart Meeting Summarizer (Open Source, English Only)
 
 Free, local, privacy-friendly **meeting transcription + summarization**.
+Smart Meeting Summarizer is a free, local, and privacy-friendly tool designed to automatically transcribe and summarize meetings without relying on paid APIs or cloud services. Built entirely on an open-source stack, it offers an efficient and secure way to extract key insights from audio or text transcripts.
 
 - **Transcription**: Faster-Whisper / Whisper (English)
 - **Summarization**: `facebook/bart-large-cnn` (HF Transformers)
